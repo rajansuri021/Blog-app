@@ -1,0 +1,407 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-font: 'Open Sans', sans-serif; /* Revert to original */
+    --secondary-font: 'Lora', serif; /* Revert to original */
+
+    /* Light Theme Colors */
+    --primary-color: #4f46e5; 
+    --accent-color: #22d3ee; 
+    --heading-color: #1f2937; 
+    --text-color: #4b5563; 
+    --subtle-text-color: #6c757d; /* Slightly darker subtle text */
+    --background-color: white; /* White background */
+    --card-bg: white; /* White card background */
+    --border-color: #dee2e6; /* Standard light gray border */
+    --shadow-color: rgba(0, 0, 0, 0.075); /* Slightly darker subtle shadow */
+
+    --primary-color-rgb: 79, 70, 229;
+    --heading-color-rgb: 31, 41, 55;
+
+    --shadow-sm: 0 2px 4px var(--shadow-color);
+    --shadow-md: 0 4px 10px var(--shadow-color);
+    --shadow-lg: 0 10px 25px var(--shadow-color);
+    /* Restore larger radius */
+    --border-radius-md: .6rem; 
+    --border-radius-lg: .8rem; 
+}
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=75'); /* New scenic blur */
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color); /* Keep white fallback */
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+h1 {
+    color: var(--heading-color); /* Revert */
+    font-size: 2.8rem; /* Revert */
+    text-shadow: none;
+}
+h2.card-title {
+     color: var(--primary-color); /* Revert to primary color for emphasis */
+     margin-bottom: 1.2rem; /* Revert */
+}
+h3.image-section-title {
+    font-size: 1.3rem;
+    color: var(--subtle-text-color);
+    font-weight: 500;
+    font-family: var(--primary-font);
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.lead {
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background: #e0e8f0; /* Pale blue matching background image */
+    /* backdrop-filter: blur(10px); */ 
+    border-bottom: 1px solid #c8d4e0; /* Slightly darker border for contrast */
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+.navbar-brand {
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--heading-color) !important; /* Dark color for brand */
+}
+.navbar .nav-link {
+    color: var(--text-color); /* Dark color for links */
+    transition: color 0.2s ease;
+}
+.navbar .nav-link:hover, .navbar .nav-link.active {
+    color: var(--primary-color); /* Use primary color for hover/active */
+}
+.navbar .nav-link.active {
+     font-weight: 600;
+}
+.navbar .form-control {
+    background-color: #fff; /* White background for search */
+    border: 1px solid #ced4da; /* Standard border */
+    color: var(--text-color); /* Standard text color */
+}
+.navbar .form-control::placeholder {
+     color: var(--subtle-text-color); /* Lighter placeholder */
+}
+.navbar .btn-outline-light { /* Change this class or its styles if keeping button */
+     /* Let's change to btn-outline-secondary for better contrast */
+     border-color: #6c757d; /* Bootstrap secondary color */
+     color: #6c757d;
+}
+.navbar .btn-outline-light:hover { /* Change this class or its styles if keeping button */
+     background-color: #6c757d;
+     color: #fff;
+}
+
+/* --- Layout & Components --- */
+.main-container {
+    padding-top: 100px; /* Revert padding for fixed navbar */
+    padding-bottom: 60px;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+}
+
+/* Restore Selector Area styles */
+.selector-area {
+    background: var(--card-bg); /* White card background */
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    padding: 25px 30px;
+    margin-bottom: 50px;
+    /* Remove transition if added previously */
+    transition: none;
+}
+
+/* Restore Blog Post Card styling */
+.blog-post-card {
+    background: var(--card-bg); /* White card background */
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Restore transition */
+    padding: 30px 35px; /* Restore padding */
+    margin-bottom: 1.5rem; /* Add margin between cards */
+    opacity: 1; /* Ensure visible */
+    transform: none; 
+    animation: none; 
+    cursor: default;
+    /* Remove border-bottom if added */
+    /* border-bottom: 1px solid var(--border-color); */ 
+}
+
+.blog-post-card:hover { 
+    /* Restore hover effect */
+     transform: translateY(-5px);
+     box-shadow: var(--shadow-lg);
+}
+
+.blog-post-card .card-title {
+    padding-bottom: 1rem; /* Restore */
+    border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.2); /* Restore */
+    margin-bottom: 1.5rem; /* Restore */
+}
+
+.blog-post-card .post-card-main-content {
+     cursor: pointer; /* Add pointer only to clickable area */
+}
+
+.blog-post-card .text-muted.small {
+     font-size: 0.85rem;
+ }
+
+/* Forms */
+.form-select,
+.form-control,
+textarea.form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+.form-select:focus,
+.form-control:focus,
+textarea.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 .25rem rgba(var(--primary-color-rgb), .2);
+    background-color: #fff;
+}
+
+/* Buttons */
+.btn {
+    border-radius: var(--border-radius-md);
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+.btn:hover {
+     transform: translateY(-2px);
+     box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    border-color: darken(var(--primary-color), 10%);
+}
+
+.btn-success {
+     background-color: var(--accent-color);
+     border-color: var(--accent-color);
+     color: var(--heading-color); /* Better contrast on light cyan */
+}
+.btn-success:hover {
+    background-color: darken(var(--accent-color), 10%);
+    border-color: darken(var(--accent-color), 10%);
+    color: var(--heading-color);
+}
+
+.btn-outline-danger {
+     color: #dc3545;
+     border-color: #dc3545;
+}
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Images */
+ .blog-post-image:hover {
+    transform: scale(1.04);
+    box-shadow: var(--shadow-md);
+}
+
+/* Alerts */
+.alert {
+    border-radius: var(--border-radius-md);
+    border-width: 0;
+    box-shadow: var(--shadow-sm);
+}
+ .alert-info {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+ }
+ .alert-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #b98900;
+ }
+ .alert-secondary {
+     background-color: rgba(108, 117, 125, 0.1);
+     color: #6c757d;
+ }
+
+/* Footer */
+.footer {
+    background-color: #f8f9fa; /* Light gray footer background */
+    color: var(--text-color); /* Darker text color */
+    padding: 20px 0;
+    font-size: 0.9rem;
+    margin-top: auto;
+    /* backdrop-filter: blur(5px); */ /* Remove blur */
+    border-top: 1px solid #dee2e6; /* Add border top for separation */
+}
+
+/* Modal */
+.modal-content {
+    background-color: var(--background-color);
+    border: none;
+    border-radius: var(--border-radius-lg);
+}
+.modal-header {
+     border-bottom: 1px solid #dee2e6;
+     background-color: #f1f3f5;
+}
+.modal-title {
+     color: var(--primary-color);
+     font-weight: 700;
+}
+.modal-body h5, .modal-body h6 {
+     color: var(--heading-color);
+}
+.modal-footer {
+     border-top: 1px solid #dee2e6;
+     background-color: #f1f3f5;
+}
+
+#modalPostComments {
+    background-color: var(--background-color); /* Match modal body (white) */
+    padding: 15px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid #dee2e6;
+}
+
+#modalPostComments strong {
+    color: var(--primary-color); /* Use primary color for user */
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--subtle-text-color);
+}
+.loading-indicator .spinner-border {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* Ensure dark mode compatibility (basic) - COMMENTING OUT AGAIN */
+/*
+@media (prefers-color-scheme: dark) {
+    :root {
+        // Dark mode overrides 
+        --heading-color: #e5e7eb;
+        --text-color: #d1d5db;
+        --subtle-text-color: #9ca3af;
+        --background-color: #1f2937;
+        --card-bg: rgba(55, 65, 81, 0.6); 
+        --overlay-bg: rgba(17, 24, 39, 0.85);
+        --border-color: rgba(255, 255, 255, 0.2);
+        --primary-color: #6366f1; 
+        --accent-color: #22d3ee; 
+    }
+    .modal-content, .modal-header, .modal-footer {
+         background-color: #374151;
+         border-color: #4b5563;
+    }
+     #modalPostComments { // This rule was causing the dark background 
+        background-color: #4b5563;
+        border-color: #6b7280;
+    }
+    .navbar .form-control {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}
+*/
+
+/* Image Grid Styling */
+.blog-images-grid {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.blog-images-grid .col {
+    padding: 12px; /* Slightly more padding around images */
+}
+
+.blog-post-image {
+    display: block;
+    width: 100%; /* Ensure it fills the column */
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+/* Modal Customizations */
+.modal-body .blog-modal-image {
+    margin-bottom: .5rem; /* Add some space below modal images */
+    border: 1px solid var(--border-color); /* Optional: consistent border */
+}
+
+/* Ensure modal image section header is hidden correctly if no images */
+.modal-body > h6:has(+ #modalPostImages:empty) {
+    display: none;
+}
+#modalPostImages:empty {
+    display: none;
+}
+
+/* New Post Form Styling */
+.new-post-card .form-text {
+    font-size: 0.85em;
+}
+
+/* About Card Styling */
+.about-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+/* Modal Comments Styling */
+#modalPostComments {
+    font-size: 0.95rem;
+}
+
+#modalPostComments .border-bottom:last-child {
+    border-bottom: none !important; /* Remove border from last comment */
+}
+
+#modalPostComments strong {
+    color: var(--primary-color);
+}
+
+#commentForm textarea {
+    resize: vertical; /* Allow vertical resize */
+} 
